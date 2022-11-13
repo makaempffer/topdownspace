@@ -21,7 +21,7 @@ class Player(pg.sprite.Sprite):
     def movement(self):
         sin_a = math.sin(self.angle)
         cos_a = math.cos(self.angle)
-        dx, dy = 0, 0
+        dx, dy = self.vel_x, self.vel_y
         speed = PLAYER_SPEED * self.game.delta_time
         speed_sin = speed * sin_a
         speed_cos = speed * cos_a
@@ -36,7 +36,8 @@ class Player(pg.sprite.Sprite):
             self.angle -= PLAYER_ROT_SPEED * self.game.delta_time
         if keys[pg.K_d]:
             self.angle += PLAYER_ROT_SPEED * self.game.delta_time
-
+        self.vel_x = dx 
+        self.vel_y = dy 
         
         
         self.x += dx
